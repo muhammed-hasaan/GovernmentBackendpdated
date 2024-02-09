@@ -8,8 +8,7 @@ app.use(cors());
 const bcrypt = require("bcryptjs");
 app.use(express.urlencoded({ extended: false }));
 
-const mongoUrl =
-  "mongodb+srv://hasaan0:hasaan0@cluster0.pibsp6d.mongodb.net/"
+const mongoUrl ="mongodb+srv://newtest:newtest@cluster0.verwgdi.mongodb.net/"
 
 mongoose
   .connect(mongoUrl, {
@@ -29,7 +28,7 @@ const Images = mongoose.model("ImageDetails");
 const storage = multer.memoryStorage();
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 50 * 1024 * 1024 }, // Set the limit to 50MB (adjust as needed)
+  limits: { fileSize: 100 * 1024 * 1024 }, // Set the limit to 50MB (adjust as needed)
 });
 
 app.post("/register", async (req, res) => {
@@ -46,7 +45,6 @@ app.post("/register", async (req, res) => {
       email,
       password: encryptedPassword,
     });
-    res.send({ status: "ok" });
   } catch (error) {
     res.send({ status: "error" });
   }
@@ -84,7 +82,7 @@ app.post("/login-user", async (req, res) => {
 app.post("/upload-image", async (req, res) => {
   const { base64 } = req.body;
   try {
-    await Images.create({ image: base64 ,  name:req.body.name , select:req.body.select ,password:req.body.password, fileid:req.body.fileid , date:req.body.date , code:req.body.qrCodeImage });
+    await Images.create({ image: base64 ,  name:req.body.name , select:req.body.select ,password:req.body.password, fileid:req.body.fileid , date:req.body.date , code:req.body.qrCodeImage  , location:req.body.location , QrGet:req.body.QrGet, Qrcode:req.body.uniqueId});
     res.send({ Status: "ok" })
 
   } catch (error) {

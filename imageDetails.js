@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const ImageDetailsScehma = new mongoose.Schema(
   {
    image:String,
@@ -8,7 +7,10 @@ const ImageDetailsScehma = new mongoose.Schema(
    password:String,
    fileid:String,
    date:String,
-   code:String
+   code:String,
+   location:String,
+   QrGet:String,
+   Qrcode:String
   },
   {
     collection: "ImageDetails",
