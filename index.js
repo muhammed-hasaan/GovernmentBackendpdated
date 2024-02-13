@@ -80,9 +80,9 @@ app.post("/login-user", async (req, res) => {
 });
 
 app.post("/upload-image", async (req, res) => {
-  const { base64 } = req.body;
+  const { base64 }  = req.body;
   try {
-    await Images.create({ image: base64 ,  name:req.body.name , select:req.body.select ,password:req.body.password, fileid:req.body.fileid , date:req.body.date , code:req.body.qrCodeImage  , location:req.body.location , QrGet:req.body.QrGet, Qrcode:req.body.uniqueId});
+    await Images.create({ image: base64, name:req.body.name , select:req.body.select ,password:req.body.password, fileid:req.body.fileid , date:req.body.date , code:req.body.qrCodeImage  , location:req.body.location , QrGet:req.body.QrGet, Qrcode:req.body.uniqueId , image2:req.body.ii , image3:req.body.iii});
     res.send({ Status: "ok" })
 
   } catch (error) {
